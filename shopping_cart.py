@@ -1,5 +1,8 @@
 # shopping_cart.py
 
+import datetime
+
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,11 +28,36 @@ products = [
 
 # TODO: write some Python code here to produce the desired functionality...
 
-print(products)
+
+for p in products:
+    print(p)
+
+x = 1 #our counter variable
+running_total = 0
+while x < 5: #todo: restore infinite loop
+    idSelection = input("Please input a product id: ")
+    print("Your selection was: " + idSelection)
+
+
+    matching_products  = [p for p in products if p["id"] == int(idSelection)]
+    
+    if len(matching_products) == 1:   
+         product = matching_products[0]
+         price = product["price"] #todo: lookup price 
+         running_total += price
+    else:
+        for p in matching_products:
+            price = p["price"] #todo: lookup price 
+            running_total += price
+            
+   
+    x += 1 #increment
+
+print("The total price is: " + str(running_total))
 
 # an infinite loop! you can press control+c to cancel the program if/when it gets stuck...
-while True:
-    # capturing user input and storing in a variable
-    user_input = input("Please input a product identifier, or 'DONE' if there are no more items: ")
-    # demonstrating ability to recognize what the input was, although you might also want to check its datatype
-    print("YOUR INPUT WAS: " + user_input)
+#while True:
+#    # capturing user input and storing in a variable
+#    user_input = input("Please input a product identifier, or 'DONE' if there are no more items: ")
+#    # demonstrating ability to recognize what the input was, although you might also want to check its datatype
+#    print("YOUR INPUT WAS: " + user_input)
