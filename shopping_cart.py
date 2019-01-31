@@ -47,7 +47,6 @@ stdTime = t.strftime("%Y-%m-%d  %H:%M:%S")
 while doneBool == True: #loop for grocery cart items
     try:
         idSelection = input("Please input a product identifer, or 'DONE', if there are no more items: ")
-        print("Your selection was: " + idSelection)
         
         if idSelection == "DONE":   #if DONE
              doneBool = False
@@ -82,7 +81,7 @@ while doneBool == True: #loop for grocery cart items
 
 #Name
 print(dashes)
-print("MILLS and Co.")
+print("MILLS and Co. Groceries, Goods, & More")
 print(dashes)
 
 #Store info and time
@@ -104,9 +103,9 @@ totalFinal = running_total + taxPortion
 
 #Format totals
 #price_USD = " (${0:.2f})".format(p["price"])
-running_total_USD = " (${0:.2f})".format(running_total)
-taxPortion_USD = " (${0:.2f})".format(taxPortion)
-totalFinal_USD = " (${0:.2f})".format(totalFinal)
+running_total_USD = " ${0:.2f}".format(running_total)
+taxPortion_USD = " ${0:.2f}".format(taxPortion)
+totalFinal_USD = " ${0:.2f}".format(totalFinal)
 
 #ALL pricing info
 print(dashes)
@@ -116,4 +115,4 @@ print("Total: " + totalFinal_USD)
 print(dashes)
 
 #Closing
-print("Thank you come again.")
+print("Thank you, please come again!\n\n")
