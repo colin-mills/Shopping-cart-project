@@ -32,7 +32,7 @@ products = [
 #Initialize Variables #
 #######################
 
-dashes =  "---------------------------------------------------------"
+dashes =  "--------------------------------------------------------------------------------"
 doneBool = True #our Boolean switch
 running_total = 0.0 #running total of price
 idSelection = ""
@@ -81,7 +81,7 @@ while doneBool == True: #loop for grocery cart items
 
 #Name
 print(dashes)
-print("MILLS and Co. Groceries, Goods, & More")
+print("\t\tMILLS and Co. Groceries, Goods, & More")
 print(dashes)
 
 #Store info and time
@@ -91,11 +91,16 @@ print("Checkout Time: " + stdTime)
 print(dashes)
 
 #Prints items from cartList
-print("Shopping Cart Items: ")
+print("Shopping Cart Items: ", end= " ")
 
-for items in cartList:
-    itemPrice_USD = " (${0:.2f})".format(items["price"])
-    print("+ " + str(items["name"]) + itemPrice_USD)
+if len(cartList) == 0:
+    print("No items purchased today")
+else:
+    print("")
+    for items in cartList:
+        itemPrice_USD = "(${0:.2f})".format(items["price"])
+        name = items["name"]
+        print("+ " + name.ljust(70) + itemPrice_USD.rjust(8))
 
 #Calculations for pricing
 taxPortion = running_total * .06 #sales tax
@@ -109,10 +114,10 @@ totalFinal_USD = " ${0:.2f}".format(totalFinal)
 
 #ALL pricing info
 print(dashes)
-print("Subtotal: " + running_total_USD)
-print("Plus Washington D.C. Sales Tax (6%): " + taxPortion_USD)
-print("Total: " + totalFinal_USD)
+print("Subtotal: ".ljust(70) + running_total_USD.rjust(10))
+print("Plus Washington D.C. Sales Tax (6%): ".ljust(70) + taxPortion_USD.rjust(10))
+print("Total: ".ljust(70) + totalFinal_USD.rjust(10))
 print(dashes)
 
-#Closing
+#outro
 print("Thank you, please come again!\n\n")
