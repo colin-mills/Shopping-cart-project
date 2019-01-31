@@ -28,32 +28,48 @@ products = [
 
 # TODO: write some Python code here to produce the desired functionality...
 
+#
+#Initialize Variables *
+#
 
-for p in products:
-    print(p)
-
-x = 1 #our counter variable
-running_total = 0
-while x < 5: #todo: restore infinite loop
-    idSelection = input("Please input a product id: ")
-    print("Your selection was: " + idSelection)
+doneBool = True #our Boolean switch
+running_total = 0 #running total of price
+idSelection = ""
+cartList = []
 
 
-    matching_products  = [p for p in products if p["id"] == int(idSelection)]
-    
-    if len(matching_products) == 1:   
-         product = matching_products[0]
-         price = product["price"] #todo: lookup price 
-         running_total += price
-    else:
-        for p in matching_products:
-            price = p["price"] #todo: lookup price 
-            running_total += price
+while doneBool == True: #loop for grocery cart items
+    try:
+        idSelection = input("Please input a product identifer, or 'DONE', if there are no more items: ")
+        print("Your selection was: " + idSelection)
+        
+        if idSelection == "DONE":   #if DONE
+             doneBool = False
+       
+        elif int(idSelection) > 0 and int(idSelection) <21:
             
-   
-    x += 1 #increment
 
-print("The total price is: " + str(running_total))
+            cartList.append(idSelection) #Adds item to cart
+
+            matching_products  = [p for p in products if p["id"] == int(idSelection)] #Finds all matching items
+            
+            if len(matching_products) == 1:   #If only one item under this ID
+                product = matching_products[0]
+                price = product["price"]  #lookup price
+                running_total += price
+            else:
+                for p in matching_products: #If multiple items match
+                    price = p["price"] # lookup price 
+                    running_total += price         
+        else: #Checks for invalid input
+            print("\nPlease enter a valid input between 1 - 20.\n")
+
+    except ValueError:
+            print("\nERROR: value error, Please enter 'DONE' if done\n")
+
+print("The total price is: " + str(running_total) + "\n")
+
+print("Shopping cart identifiers include: " + str(cartList) + "\n")
 
 # an infinite loop! you can press control+c to cancel the program if/when it gets stuck...
 #while True:
