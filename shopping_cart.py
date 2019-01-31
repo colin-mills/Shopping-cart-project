@@ -28,17 +28,21 @@ products = [
 
 # TODO: write some Python code here to produce the desired functionality...
 
-#
-#Initialize Variables *
-#
-dashes = "---------------------"
+#######################
+#Initialize Variables #
+#######################
+
+dashes =  "---------------------------------------------------------"
 doneBool = True #our Boolean switch
 running_total = 0.0 #running total of price
 idSelection = ""
 cartList = []
 t= datetime.datetime.now()
-stdTime = t.strftime("%Y-%m-%d  %H:M")
+stdTime = t.strftime("%Y-%m-%d  %H:%M:%S")
 
+############################
+#Code to handle user input #
+############################
 
 while doneBool == True: #loop for grocery cart items
     try:
@@ -51,60 +55,58 @@ while doneBool == True: #loop for grocery cart items
         elif int(idSelection) > 0 and int(idSelection) <21:
             
 
-            cartList.append(idSelection) #Adds item to cart
+            #cartList.append(idSelection) #Adds item to cart
 
             matching_products  = [p for p in products if p["id"] == int(idSelection)] #Finds all matching items
             
             if len(matching_products) == 1:   #If only one item under this ID
                 product = matching_products[0]
+                cartList.append(product) #Adds item to cart
                 price = product["price"]  #lookup price
                 running_total += price
             else:
                 for p in matching_products: #If multiple items match
+                    cartList.append(p) #Adds item to cart
                     price = p["price"] # lookup price 
                     running_total += price         
         else: #Checks for invalid input
             print("\nPlease enter a valid input between 1 - 20.\n")
 
-    except ValueError:
+    except ValueError: #Checks for invalid data type that isn't "DONE"
             print("\nERROR: value error, Please enter 'DONE' if done\n")
 
+
+###########################
+#### Now print receipt ####
+###########################
+
+#Name
 print(dashes)
 print("MILLS and Co.")
 print(dashes)
 
+#Store info and time
 print("Web: https://github.com/colin-mills/Shopping-cart-project")
 print("Phone: 1.202.687.0100")
 print("Checkout Time: " + stdTime)
 print(dashes)
 
+#Prints items from cartList
 print("Shopping Cart Items: ")
 
-#for items in cartList:
-#    index = items - 1
-#    item = products[index]
-#    print("+ " + item["name"] + item["price"])
+for items in cartList:
+   print("+ " + str(items["name"]) + str(items["price"]))
 
+#Calculations for pricing
 taxPortion = running_total * .06 #sales tax
 totalFinal = running_total + taxPortion
 
-
+#ALL pricing info
 print(dashes)
 print("Subtotal: " + str(running_total))
-
-
-
 print("Plus Washington D.C. Sales Tax (6%): " + str(taxPortion))
-
-
 print("Total: " + str(totalFinal))
-
 print(dashes)
 
+#Closing
 print("Thank you come again.")
-# an infinite loop! you can press control+c to cancel the program if/when it gets stuck...
-#while True:
-#    # capturing user input and storing in a variable
-#    user_input = input("Please input a product identifier, or 'DONE' if there are no more items: ")
-#    # demonstrating ability to recognize what the input was, although you might also want to check its datatype
-#    print("YOUR INPUT WAS: " + user_input)
