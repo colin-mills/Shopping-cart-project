@@ -95,17 +95,24 @@ print(dashes)
 print("Shopping Cart Items: ")
 
 for items in cartList:
-   print("+ " + str(items["name"]) + str(items["price"]))
+    itemPrice_USD = " (${0:.2f})".format(items["price"])
+    print("+ " + str(items["name"]) + itemPrice_USD)
 
 #Calculations for pricing
 taxPortion = running_total * .06 #sales tax
 totalFinal = running_total + taxPortion
 
+#Format totals
+#price_USD = " (${0:.2f})".format(p["price"])
+running_total_USD = " (${0:.2f})".format(running_total)
+taxPortion_USD = " (${0:.2f})".format(taxPortion)
+totalFinal_USD = " (${0:.2f})".format(totalFinal)
+
 #ALL pricing info
 print(dashes)
-print("Subtotal: " + str(running_total))
-print("Plus Washington D.C. Sales Tax (6%): " + str(taxPortion))
-print("Total: " + str(totalFinal))
+print("Subtotal: " + running_total_USD)
+print("Plus Washington D.C. Sales Tax (6%): " + taxPortion_USD)
+print("Total: " + totalFinal_USD)
 print(dashes)
 
 #Closing
