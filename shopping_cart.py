@@ -31,11 +31,13 @@ products = [
 #
 #Initialize Variables *
 #
-
+dashes = "---------------------"
 doneBool = True #our Boolean switch
-running_total = 0 #running total of price
+running_total = 0.0 #running total of price
 idSelection = ""
 cartList = []
+t= datetime.datetime.now()
+stdTime = t.strftime("%Y-%m-%d  %H:M")
 
 
 while doneBool == True: #loop for grocery cart items
@@ -67,10 +69,39 @@ while doneBool == True: #loop for grocery cart items
     except ValueError:
             print("\nERROR: value error, Please enter 'DONE' if done\n")
 
-print("The total price is: " + str(running_total) + "\n")
+print(dashes)
+print("MILLS and Co.")
+print(dashes)
 
-print("Shopping cart identifiers include: " + str(cartList) + "\n")
+print("Web: https://github.com/colin-mills/Shopping-cart-project")
+print("Phone: 1.202.687.0100")
+print("Checkout Time: " + stdTime)
+print(dashes)
 
+print("Shopping Cart Items: ")
+
+#for items in cartList:
+#    index = items - 1
+#    item = products[index]
+#    print("+ " + item["name"] + item["price"])
+
+taxPortion = running_total * .06 #sales tax
+totalFinal = running_total + taxPortion
+
+
+print(dashes)
+print("Subtotal: " + str(running_total))
+
+
+
+print("Plus Washington D.C. Sales Tax (6%): " + str(taxPortion))
+
+
+print("Total: " + str(totalFinal))
+
+print(dashes)
+
+print("Thank you come again.")
 # an infinite loop! you can press control+c to cancel the program if/when it gets stuck...
 #while True:
 #    # capturing user input and storing in a variable
