@@ -1,5 +1,6 @@
 # shopping_cart.py
 from functions import to_USD, human_friendly_timestamp
+import datetime
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -23,8 +24,6 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-
-
 #######################
 #Initialize Variables #
 #######################
@@ -34,7 +33,8 @@ doneBool = True #our Boolean switch
 running_total = 0.0 #running total of price
 idSelection = ""
 cartList = []
-stdTime = human_friendly_timestamp()
+t = datetime.datetime.now()
+stdTime = human_friendly_timestamp(t)
 
 ############################
 #Code to handle user input #
