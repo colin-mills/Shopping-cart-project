@@ -3,6 +3,12 @@ from functions import to_USD, human_friendly_timestamp, find_product
 import datetime
 
 #######################
+#Initialize Constants #
+#######################
+
+DC_TAX_RATE = .06
+
+#######################
 #Initialize Variables #
 #######################
 
@@ -75,7 +81,7 @@ else:
         print("+ " + name.ljust(70) + itemPrice_USD.rjust(8))
 
 #Calculations for pricing
-taxPortion = running_total * .06 #sales tax
+taxPortion = running_total * DC_TAX_RATE #sales tax
 totalFinal = running_total + taxPortion
 
 #Format totals
