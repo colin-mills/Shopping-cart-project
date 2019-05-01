@@ -1,8 +1,5 @@
 # shopping_cart.py
-import datetime
-from functions import to_USD
-
-
+from functions import to_USD, human_friendly_timestamp
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -37,8 +34,7 @@ doneBool = True #our Boolean switch
 running_total = 0.0 #running total of price
 idSelection = ""
 cartList = []
-t = datetime.datetime.now()
-stdTime = t.strftime("%Y-%m-%d  %H:%M:%S")
+stdTime = human_friendly_timestamp()
 
 ############################
 #Code to handle user input #
