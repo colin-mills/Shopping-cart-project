@@ -1,6 +1,6 @@
 # shopping_cart.py
-
 import datetime
+from functions import to_USD
 
 
 products = [
@@ -26,7 +26,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# TODO: write some Python code here to produce the desired functionality...
+
 
 #######################
 #Initialize Variables #
@@ -37,7 +37,7 @@ doneBool = True #our Boolean switch
 running_total = 0.0 #running total of price
 idSelection = ""
 cartList = []
-t= datetime.datetime.now()
+t = datetime.datetime.now()
 stdTime = t.strftime("%Y-%m-%d  %H:%M:%S")
 
 ############################
@@ -48,13 +48,11 @@ while doneBool == True: #loop for grocery cart items
     try:
         idSelection = input("Please input a product identifer, or 'DONE', if there are no more items: ")
         
+        id
         if idSelection == "DONE":   #if DONE
              doneBool = False
        
         elif int(idSelection) > 0 and int(idSelection) <21:
-            
-
-            #cartList.append(idSelection) #Adds item to cart
 
             matching_products  = [p for p in products if p["id"] == int(idSelection)] #Finds all matching items
             
@@ -91,14 +89,14 @@ print("Checkout Time: " + stdTime)
 print(dashes)
 
 #Prints items from cartList
-print("Shopping Cart Items: ", end= " ")
+print("Shopping Cart Items: ")
 
 if len(cartList) == 0:
     print("No items purchased today")
 else:
     print("")
     for items in cartList:
-        itemPrice_USD = "(${0:.2f})".format(items["price"])
+        itemPrice_USD = to_USD(items["price"])
         name = items["name"]
         print("+ " + name.ljust(70) + itemPrice_USD.rjust(8))
 
@@ -108,9 +106,9 @@ totalFinal = running_total + taxPortion
 
 #Format totals
 #price_USD = " (${0:.2f})".format(p["price"])
-running_total_USD = " ${0:.2f}".format(running_total)
-taxPortion_USD = " ${0:.2f}".format(taxPortion)
-totalFinal_USD = " ${0:.2f}".format(totalFinal)
+running_total_USD = to_USD(running_total)
+taxPortion_USD = to_USD(taxPortion)
+totalFinal_USD = to_USD(totalFinal)
 
 #ALL pricing info
 print(dashes)
