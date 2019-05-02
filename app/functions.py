@@ -37,7 +37,6 @@ def find_product(product_ID):
     if type(product_ID) == int or type(product_ID) == str:
         if float(product_ID).is_integer():
             matching_products = [p for p in products if p["id"] == int(product_ID)] #Finds all matching items
-    
     return matching_products
 
 
