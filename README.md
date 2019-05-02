@@ -16,7 +16,7 @@ Clone or download this repository
 Execute the "shopping cart" program:
 
 ```sh
-python shopping_cart.py
+python app/shopping_cart.py
 ```
 
 ## Testing
