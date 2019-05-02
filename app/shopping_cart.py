@@ -5,7 +5,6 @@ import datetime
 #######################
 #Initialize Constants #
 #######################
-
 DC_TAX_RATE = .06
 
 #######################
@@ -76,25 +75,18 @@ if len(cartList) == 0:
 else:
     print("")
     for items in cartList:
-        itemPrice_USD = to_USD(items["price"])
         name = items["name"]
-        print("+ " + name.ljust(70) + itemPrice_USD.rjust(8))
+        print("+ " + name.ljust(70) + to_USD(items["price"]).rjust(8))
 
 #Calculations for pricing
 taxPortion = running_total * DC_TAX_RATE #sales tax
 totalFinal = running_total + taxPortion
 
-#Format totals
-#price_USD = " (${0:.2f})".format(p["price"])
-running_total_USD = to_USD(running_total)
-taxPortion_USD = to_USD(taxPortion)
-totalFinal_USD = to_USD(totalFinal)
-
 #ALL pricing info
 print(dashes)
-print("Subtotal: ".ljust(70) + running_total_USD.rjust(10))
-print("Plus Washington D.C. Sales Tax (6%): ".ljust(70) + taxPortion_USD.rjust(10))
-print("Total: ".ljust(70) + totalFinal_USD.rjust(10))
+print("Subtotal: ".ljust(70) + to_USD(running_total).rjust(10))
+print("Plus Washington D.C. Sales Tax (6%): ".ljust(70) + to_USD(taxPortion).rjust(10))
+print("Total: ".ljust(70) + to_USD(totalFinal).rjust(10))
 print(dashes)
 
 #outro
